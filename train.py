@@ -1,11 +1,9 @@
 import tensorflow as tf
-from models.model import SKiN_CNN
+from model import SKiN_CNN
 import keras
 import warnings
-import requests
-import os
-import zipfile
-import io
+
+
 def train_model():
     warnings.filterwarnings("ignore")
     tf.keras.backend.clear_session()
