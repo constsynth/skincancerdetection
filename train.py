@@ -1,5 +1,5 @@
 import tensorflow as tf
-from model import SKiN_CNN
+from model_cnn import SKiN_CNN
 import keras
 import warnings
 
