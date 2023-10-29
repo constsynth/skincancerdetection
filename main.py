@@ -15,10 +15,10 @@ def inference_model(image: Image.Image) -> float:
     prob = model.predict(np.expand_dims(image, 0))
     return round(prob[0][0], 2)
 
-# if __name__ == "__main__":
-#     # train_model() #if not pretrained yet
-#     probability = inference_model(Image.open('datasets/train/malignant/20.jpg'))
-#     print(probability)
+if __name__ == "__main__":
+    # train_model() #if not pretrained yet
+    probability = inference_model(Image.open('datasets/train/malignant/20.jpg'))
+    print(probability)
 
 
 
