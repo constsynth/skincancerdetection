@@ -4,12 +4,16 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 from image_processing import crop_center, super_resolution
-model = tf.keras.models.load_model("./models/SKiN_CNN_2.keras")
-print("Loaded model is SKiN_CNN_2.keras")
+
+path_to_model = "./models/SKiN_CNN.keras"
+model = keras.models.load_model(path_to_model)
+print(f"Loaded model is {path_to_model}")
 
 def inference_model(image: Image.Image) -> float:
-    image = crop_center(image, frac=0.25)
-    image = super_resolution(image)
+    # image = crop_center(image, frac=0.4)
+    # image = super_resolution(image)
+    image = image.resize((256, 256))
+    print(image.size)
     image = keras.utils.img_to_array(image)
     image = image/255.0
     prob = model.predict(np.expand_dims(image, 0))
@@ -17,7 +21,7 @@ def inference_model(image: Image.Image) -> float:
 
 # if __name__ == "__main__":
 #     # train_model() #if not pretrained yet
-#     probability = inference_model(Image.open('datasets/train/malignant/20.jpg'))
+#     probability = inference_model(Image.open('datasets/test/benign/216.jpg'))
 #     print(probability)
 
 

@@ -11,6 +11,7 @@ def crop_center(image: Image.Image,
     bottom = image.size[1] - ((1 - frac) / 2) * image.size[1]
     cropped_img = image.crop((left, upper, right, bottom))
     cropped_img = cropped_img.resize((256, 256))
+    cropped_img.save('./sr_not_applied.jpg')
     return cropped_img
 
 def super_resolution(image: Image.Image) -> Image.Image:
@@ -20,4 +21,5 @@ def super_resolution(image: Image.Image) -> Image.Image:
     image = np.array(image, dtype=np.uint8)
     image = Image.fromarray(image)
     image = image.resize((256, 256))
+    image.save('./sr_is_applied.jpg')
     return image

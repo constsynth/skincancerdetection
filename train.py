@@ -33,10 +33,10 @@ def train_model():
     optimizer = init.optimizers[0] # using Adam optimizer
     model.compile(loss='binary_crossentropy',
                   optimizer=optimizer,
-                  metrics=[tf.keras.metrics.Precision(), tf.keras.metrics.Recall(), "acc"])
+                  metrics=[tf.keras.metrics.Precision(), tf.keras.metrics.Recall(), tf.keras.metrics.AUC(), "acc"])
 
     model.fit(train_data, epochs=10, validation_data=test_data)
-    model.save("./models/SKiN_CNN_2.keras")
+    model.save("./models/SKiN_CNN.keras")
 
 if __name__ == "__main__":
     train_model()
