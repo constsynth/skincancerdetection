@@ -1,9 +1,7 @@
-from train import train_model
 from PIL import Image
 import numpy as np
-import tensorflow as tf
 from tensorflow import keras
-from image_processing import crop_center, super_resolution
+from cspackage.image_processing import crop_center, super_resolution
 
 path_to_model = "./models/SKiN_CNN.keras"
 model = keras.models.load_model(path_to_model)
