@@ -1,5 +1,4 @@
 import tensorflow as tf
-from tensorflow import keras
 class SKiN_CNN():
     def __init__(self):
         super().__init__()
@@ -11,7 +10,6 @@ class SKiN_CNN():
         tf.keras.layers.RandomContrast(0.1),
         tf.keras.layers.RandomRotation(0.2)
     ])
-
 
         self.model = tf.keras.models.Sequential([
         self.data_augmentation,

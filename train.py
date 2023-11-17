@@ -3,7 +3,6 @@ from model_cnn import SKiN_CNN
 import keras
 import warnings
 
-
 def train_model():
     warnings.filterwarnings("ignore")
     tf.keras.backend.clear_session()
@@ -34,14 +33,24 @@ def train_model():
     model.compile(loss='binary_crossentropy',
                   optimizer=optimizer,
                   metrics=[tf.keras.metrics.Precision(), tf.keras.metrics.Recall(), tf.keras.metrics.AUC(), "acc"])
-
+    model_name = 'SKIN_CNN_V3'
     model.fit(train_data, epochs=10, validation_data=test_data)
-    model.save("./models/SKiN_CNN.keras")
+    model.save(f"./models/{model_name}.keras")
 
 if __name__ == "__main__":
-    train_model()
+    # print(torch.cuda.is_available())
+
+    # print(tf.config.list_physical_devices('GPU'))
+
+    from tensorflow.python.client import device_lib
 
 
+    def get_available_devices():
+        local_device_protos = device_lib.list_local_devices()
+        return [x.name for x in local_device_protos]
+
+    
+    print(get_available_devices())
 
 
 
